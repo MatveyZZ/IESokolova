@@ -44,6 +44,37 @@ function init() {
     updateCartBadge();
 }
 
+// Функция для показа уведомлений
+function showNotification(message, type = 'success') {
+    // Создаем элемент уведомления
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="notification-icon">${type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'}</span>
+            <span class="notification-message">${message}</span>
+        </div>
+    `;
+    
+    // Добавляем уведомление на страницу
+    document.body.appendChild(notification);
+    
+    // Показываем уведомление
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    // Автоматически скрываем через 3 секунды
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
 // Отображение товаров
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
@@ -76,19 +107,24 @@ function renderProducts() {
 
 // Обновление количества товара на главной странице
 function updateProductQuantity(productId, newQuantity) {
+    const product = products.find(p => p.id === productId);
+    
     if (newQuantity <= 0) {
         // Удаляем товар из корзины
         cart = cart.filter(item => item.id !== productId);
+        showNotification(`${product.name} удален из корзины`, 'info');
     } else {
         const existingItem = cart.find(item => item.id === productId);
         if (existingItem) {
             existingItem.quantity = newQuantity;
+            showNotification(`Количество ${product.name} обновлено: ${newQuantity} шт.`, 'success');
         } else {
             const product = products.find(p => p.id === productId);
             cart.push({
                 ...product,
                 quantity: newQuantity
             });
+            showNotification(`${product.name} добавлен в корзину`, 'success');
         }
     }
     
@@ -152,20 +188,19 @@ function addToCart(productId, quantity = 1) {
     
     if (existingItem) {
         existingItem.quantity += quantity;
+        showNotification(`Добавлено ${quantity} шт. ${product.name}. Всего: ${existingItem.quantity} шт.`, 'success');
     } else {
         cart.push({
             ...product,
             quantity: quantity
         });
+        showNotification(`${product.name} добавлен в корзину: ${quantity} шт.`, 'success');
     }
     
     saveCartToStorage();
     updateCartBadge();
     renderProducts(); // Обновляем кнопки на главной странице
     closeModal();
-    
-    // Показываем уведомление
-    alert(`Добавлено в корзину: ${product.name} x${quantity}`);
 }
 
 // Открытие корзины
@@ -214,12 +249,16 @@ function closeCart() {
 
 // Обновление элемента корзины
 function updateCartItem(productId, newQuantity) {
+    const product = products.find(p => p.id === productId);
+    
     if (newQuantity <= 0) {
         cart = cart.filter(item => item.id !== productId);
+        showNotification(`${product.name} удален из корзины`, 'info');
     } else {
         const item = cart.find(item => item.id === productId);
         if (item) {
             item.quantity = newQuantity;
+            showNotification(`Количество ${product.name} обновлено: ${newQuantity} шт.`, 'success');
         }
     }
     
@@ -268,7 +307,7 @@ function sendOrder() {
     const sendBtn = document.querySelector('#checkoutModal .btn');
     
     if (!name || !email || !phone || !address) {
-        alert('Пожалуйста, заполните все поля');
+        showNotification('Пожалуйста, заполните все поля', 'error');
         return;
     }
     
@@ -298,7 +337,7 @@ function sendOrder() {
     // Отправка через EmailJS
     emailjs.send('service_khlato8', 'template_jup6pwi', templateParams)
         .then(function(response) {
-            alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+            showNotification('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
             cart = [];
             saveCartToStorage();
             updateCartBadge();
@@ -312,7 +351,7 @@ function sendOrder() {
             document.getElementById('customerPhone').value = '';
             document.getElementById('customerAddress').value = '';
         }, function(error) {
-            alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.');
+            showNotification('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.', 'error');
         })
         .finally(function() {
             // Разблокируем кнопку в любом случае
