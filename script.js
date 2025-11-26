@@ -38,9 +38,14 @@ let currentProduct = null;
 let isProcessingOrder = false;
 
 // Инициализация страницы
+// Инициализация страницы
 function init() {
-    renderProducts();
+    // Сначала загружаем корзину из localStorage
     loadCartFromStorage();
+    console.log('Загружена корзина:', cart);
+    
+    // Затем рендерим товары
+    renderProducts();
     updateCartBadge();
 }
 
