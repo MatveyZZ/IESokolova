@@ -6,7 +6,7 @@ const products = [
     {
         id: 1,
         name: "Пельмени Сибирские",
-        description: "Сибирские пельмени ручной работы с говядиной и свининой, 1кг.",
+        description: "Сибирские пельмени ручной работы, 1кг.",
         price: 450,
         image: "./assets/pelmeni.jpg"
     },
