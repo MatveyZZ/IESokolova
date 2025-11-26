@@ -6,30 +6,30 @@ const products = [
     {
         id: 1,
         name: "Пельмени Сибирские",
-        description: "Настоящие сибирские пельмени с говядиной и свининой, 500г",
+        description: "Сибирские пельмени ручной работы с говядиной и свининой, 1кг.",
         price: 450,
-        emoji: "🥟"
+        image: "./assets/pelmeni.jpg"
     },
     {
         id: 2,
-        name: "Вареники с картошкой",
-        description: "Вареники с картофельной начинкой и луком, 400г",
-        price: 320,
-        emoji: "🥔"
+        name: "Котлеты 'Киевские'",
+        description: "Нежнейшие котлеты из куриной грудки, 800г",
+        price: 380,
+        image: "./assets/kievskie.jpg"
     },
     {
         id: 3,
-        name: "Котлеты домашние",
-        description: "Куриные котлеты с зеленью, 6 шт по 100г",
-        price: 380,
-        emoji: "🍗"
+        name: "Зразы с сыром",
+        description: "Куриные котлеты с сыром, 800г",
+        price: 420,
+        image: "./assets/zrazy.jpg"
     },
     {
         id: 4,
-        name: "Блинчики с мясом",
-        description: "Тонкие блинчики с мясной начинкой, 8 шт",
-        price: 290,
-        emoji: "🥞"
+        name: "Котлеты 'Домашние'",
+        description: "Котлеты из свинины, 600г",
+        price: 300,
+        image: "./assets/domashnie.jpg"
     }
 ];
 
@@ -76,16 +76,25 @@ function showNotification(message, type = 'success') {
 }
 
 // Отображение товаров
+// Отображение товаров
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
     grid.innerHTML = products.map(product => {
         const cartItem = cart.find(item => item.id === product.id);
         const quantityInCart = cartItem ? cartItem.quantity : 0;
         
+        // Проверяем, является ли image путем к файлу или эмодзи
+        const isImageFile = product.image.startsWith('./') || product.image.startsWith('http');
+        
+        const imageContent = isImageFile 
+            ? `<img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+               <div class="image-placeholder" style="display: ${isImageFile ? 'none' : 'flex'};">🍽️</div>`
+            : `<div class="image-placeholder">${product.image}</div>`;
+        
         return `
             <div class="product-card" onclick="openProduct(${product.id})">
                 <div class="product-image">
-                    ${product.emoji}
+                    ${imageContent}
                 </div>
                 <div class="product-name">${product.name}</div>
                 <div class="product-description">${product.description}</div>
@@ -134,6 +143,7 @@ function updateProductQuantity(productId, newQuantity) {
 }
 
 // Открытие модального окна товара
+// Открытие модального окна товара
 function openProduct(productId) {
     currentProduct = products.find(p => p.id === productId);
     const modal = document.getElementById('productModal');
@@ -142,9 +152,17 @@ function openProduct(productId) {
     const cartItem = cart.find(item => item.id === productId);
     const initialQuantity = cartItem ? cartItem.quantity : 1;
     
+    // Проверяем, является ли image путем к файлу или эмодзи
+    const isImageFile = currentProduct.image.startsWith('./') || currentProduct.image.startsWith('http');
+    
+    const imageContent = isImageFile 
+        ? `<img src="${currentProduct.image}" alt="${currentProduct.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+           <div class="image-placeholder" style="display: ${isImageFile ? 'none' : 'flex'};">🍽️</div>`
+        : `<div class="image-placeholder">${currentProduct.image}</div>`;
+    
     content.innerHTML = `
         <div class="product-image">
-            ${currentProduct.emoji}
+            ${imageContent}
         </div>
         <div class="product-name">${currentProduct.name}</div>
         <div class="product-description">${currentProduct.description}</div>
