@@ -1,3 +1,5 @@
 Trial version of the online store for Individual Entrepreneur Sokolova N. S.
 ------------------------------------------------------------------------------------
 Пробная версия интернет магазина для Индивидуального Предпринимателя Соколовой Н. С.
+
+Ссылка: https://matveyzz.github.io/IESokolova/
