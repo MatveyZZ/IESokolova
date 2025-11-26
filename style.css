@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #f8f9fa;
+    background-color: #c8d4e1;
     color: #333;
 }
 
@@ -17,7 +17,7 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #7f87a9 0%, #764ba2 100%);
     color: white;
     padding: 2rem 0;
     text-align: center;
