@@ -5,6 +5,7 @@ Trial version of the online store for Individual Entrepreneur Sokolova N. S.
 Ссылка: https://matveyzz.github.io/IESokolova/
 
 🎨 CSS структура
+
 /css/utils/
 base.css - Базовые сбросы стилей и глобальные правила
 
@@ -28,6 +29,7 @@ style.css - Главный файл, импортирует все компон�
 
 
 ⚡ JavaScript структура
+
 /js/utils/
 helpers.js - Вспомогательные функции (форматирование, debounce)
 
