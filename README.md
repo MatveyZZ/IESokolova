@@ -4,14 +4,6 @@ Trial version of the online store for Individual Entrepreneur Sokolova N. S.
 
 Ссылка: https://matveyzz.github.io/IESokolova/
 
-🏗️ Структура папок
-morozhko-shop/
-├── 📄 index.html              # Главная страница
-├── 🎨 css/                    # Стили
-├── ⚡ js/                     # JavaScript
-├── 🖼️ assets/                # Ресурсы
-└── 📖 README.md              # Документация
-
 🎨 CSS структура
 /css/utils/
 base.css - Базовые сбросы стилей и глобальные правила
