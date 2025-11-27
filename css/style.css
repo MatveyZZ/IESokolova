@@ -1,0 +1,89 @@
+/* Главный CSS файл - импорты */
+
+/* Импорт всех компонентов */
+@import url('utils/base.css');
+@import url('utils/variables.css');
+@import url('components/header.css');
+@import url('components/products.css');
+@import url('components/cart.css');
+@import url('components/modals.css');
+@import url('components/forms.css');
+@import url('components/notifications.css');
+
+/* Кнопки */
+.btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .filter-buttons {
+        justify-content: center;
+    }
+    
+    .search-filter-container {
+        padding: 1rem;
+    }
+    
+    .modal-content {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .cart {
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .notification {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+        transform: translateY(-100px);
+    }
+    
+    .notification.show {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-buttons {
+        gap: 0.3rem;
+    }
+    
+    .filter-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}

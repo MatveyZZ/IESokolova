@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ИП Соколова Н.С. - Полуфабрикаты</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- CSS файлы -->
+    <link rel="stylesheet" href="css/utils/base.css">
+    <link rel="stylesheet" href="css/utils/variables.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/products.css">
+    <link rel="stylesheet" href="css/components/cart.css">
+    <link rel="stylesheet" href="css/components/modals.css">
+    <link rel="stylesheet" href="css/components/forms.css">
+    <link rel="stylesheet" href="css/components/notifications.css">
+    <link rel="stylesheet" href="css/style.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
@@ -45,7 +56,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно товара -->
+    <!-- Модальные окна -->
     <div class="modal" id="productModal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">×</span>
@@ -53,7 +64,6 @@
         </div>
     </div>
 
-    <!-- Модальное окно корзины -->
     <div class="modal cart-modal" id="cartModal">
         <div class="modal-content">
             <span class="close" onclick="closeCart()">×</span>
@@ -64,7 +74,6 @@
         </div>
     </div>
 
-    <!-- Модальное окно оформления заказа -->
     <div class="modal" id="checkoutModal">
         <div class="modal-content">
             <span class="close" onclick="closeCheckout()">×</span>
@@ -101,6 +110,15 @@
         <div class="cart-badge" id="cartBadge">0</div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Подключение JS файлов -->
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/utils/storage.js"></script>
+    <script src="js/modules/notifications.js"></script>
+    <script src="js/modules/products.js"></script>
+    <script src="js/modules/favorites.js"></script>
+    <script src="js/modules/search.js"></script>
+    <script src="js/modules/cart.js"></script>
+    <script src="js/modules/validation.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
