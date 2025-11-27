@@ -268,6 +268,7 @@ function sendOrder() {
     const name = document.getElementById('customerName').value;
     const email = document.getElementById('customerEmail').value;
     const phone = document.getElementById('customerPhone').value;
+    const organization = document.getElementById('customerOrganization').value;
     const address = document.getElementById('customerAddress').value;
     const sendBtn = document.querySelector('#checkoutModal .btn');
     
@@ -278,7 +279,7 @@ function sendOrder() {
     }
     
     if (!name || !email || !phone || !address) {
-        Notifications.show('Пожалуйста, заполните все поля', 'error');
+        Notifications.show('Пожалуйста, заполните все обязательные поля', 'error');
         return;
     }
     
@@ -300,6 +301,7 @@ function sendOrder() {
             customer_name: name,
             customer_email: email,
             customer_phone: phone,
+            customer_organization: organization || 'Не указано',
             customer_address: address,
             order_details: orderDetails,
             total_amount: total,
@@ -315,9 +317,11 @@ function sendOrder() {
                 Cart.clear();
                 closeCheckout();
                 
+                // Сбрасываем форму
                 document.getElementById('customerName').value = '';
                 document.getElementById('customerEmail').value = '';
                 document.getElementById('customerPhone').value = '';
+                document.getElementById('customerOrganization').value = '';
                 document.getElementById('customerAddress').value = '';
             }, function(error) {
                 throw new Error('Ошибка отправки email');

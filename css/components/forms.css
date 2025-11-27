@@ -58,3 +58,31 @@
     animation: spin 1s ease-in-out infinite;
     margin-right: 8px;
 }
+
+/* Стили для необязательных полей */
+.form-group input:not(:required) {
+    border-color: #ccc;
+}
+
+.form-group input:not(:required):focus {
+    border-color: #667eea;
+}
+
+/* Плейсхолдер для необязательных полей */
+input::placeholder {
+    color: #999;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Стили для меток необязательных полей */
+.form-group label:not([for*="required"]) {
+    font-weight: normal;
+}
+
+/* Индикатор необязательного поля */
+.form-group:has(input:not(:required)) label::after {
+    font-size: 0.8rem;
+    color: #999;
+    font-weight: normal;
+}

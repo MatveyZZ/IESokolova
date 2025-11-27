@@ -28,6 +28,13 @@ const Validation = {
                     errorMessage = 'Введите корректный номер телефона';
                 }
                 break;
+            case 'customerOrganization':
+                // Организация не обязательна, только базовая валидация
+                if (value.length > 100) {
+                    isValid = false;
+                    errorMessage = 'Название организации слишком длинное';
+                }
+                break;
             case 'customerAddress':
                 if (value.length < 5) {
                     isValid = false;
@@ -36,7 +43,7 @@ const Validation = {
                 break;
         }
 
-        if (!isValid) {
+        if (!isValid && fieldId !== 'customerOrganization') {
             field.classList.add('error');
             if (errorElement) {
                 errorElement.textContent = errorMessage;
@@ -53,13 +60,23 @@ const Validation = {
 
     // Валидация всей формы
     validateForm() {
-        const fields = ['customerName', 'customerEmail', 'customerPhone', 'customerAddress'];
+        const requiredFields = ['customerName', 'customerEmail', 'customerPhone', 'customerAddress'];
+        const optionalFields = ['customerOrganization'];
         let isValid = true;
         
-        fields.forEach(fieldId => {
+        // Валидация обязательных полей
+        requiredFields.forEach(fieldId => {
             const field = document.getElementById(fieldId);
             if (field && !this.validateField(field)) {
                 isValid = false;
+            }
+        });
+        
+        // Валидация необязательных полей (только если заполнены)
+        optionalFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (field && field.value.trim() !== '') {
+                this.validateField(field);
             }
         });
         
