@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Морожко - Полуфабрикаты</title>
+    <title>ИП Соколова Н.С. - Полуфабрикаты</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
@@ -16,8 +16,32 @@
     </header>
 
     <div class="container">
+        <!-- Поиск и фильтрация -->
+        <div class="search-filter-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Поиск полуфабрикатов..." class="search-input">
+                <button class="clear-search" id="clearSearch">✕</button>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">Все</button>
+                <button class="filter-btn" data-category="пельмени">Пельмени</button>
+                <button class="filter-btn" data-category="котлеты">Котлеты</button>
+                <button class="filter-btn" data-category="зразы">Зразы</button>
+            </div>
+            <div class="view-options">
+                <button class="view-btn" id="toggleFavorites">⭐ Избранное</button>
+            </div>
+        </div>
+
+        <!-- Сетка товаров -->
         <div class="products-grid" id="productsGrid">
             <!-- Товары будут добавлены через JavaScript -->
+        </div>
+
+        <!-- Индикатор загрузки -->
+        <div class="loading-indicator" id="loadingIndicator">
+            <div class="spinner"></div>
+            <p>Загрузка товаров...</p>
         </div>
     </div>
 
@@ -49,18 +73,22 @@
                 <div class="form-group">
                     <label>Ваше имя:</label>
                     <input type="text" id="customerName" required>
+                    <span class="error-message" id="nameError"></span>
                 </div>
                 <div class="form-group">
                     <label>Email для заявки:</label>
                     <input type="email" id="customerEmail" required>
+                    <span class="error-message" id="emailError"></span>
                 </div>
                 <div class="form-group">
                     <label>Телефон:</label>
                     <input type="tel" id="customerPhone" required>
+                    <span class="error-message" id="phoneError"></span>
                 </div>
                 <div class="form-group">
                     <label>Адрес доставки:</label>
                     <input type="text" id="customerAddress" required>
+                    <span class="error-message" id="addressError"></span>
                 </div>
                 <button class="btn" onclick="sendOrder()">Отправить заявку</button>
             </div>
