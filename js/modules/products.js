@@ -17,7 +17,7 @@ const Products = {
             price: 210, //
             image: "./assets/images/products/russkie.jpg", //////////////////
             category: "пельмени", //
-            tags: ["ручная работа", "сибирские", "премиум"]
+            tags: ["итальянская линия", "русские", "премиум"]
         },
         {
             id: 3,
@@ -26,7 +26,7 @@ const Products = {
             price: 200,
             image: "./assets/images/products/danil.jpg", ///////////////////////
             category: "пельмени",
-            tags: ["ручная работа", "сибирские", "премиум"]
+            tags: ["итальянская линия", "даниловские", "премиум"]
         },
         {
             id: 4,
@@ -35,7 +35,7 @@ const Products = {
             price: 185,
             image: "./assets/images/products/krest.jpg", ///////////////////
             category: "пельмени",
-            tags: ["ручная работа", "сибирские", "премиум"]
+            tags: ["итальянская линия", "крестьянские", "премиум"]
         },
         {
             id: 5,
@@ -44,7 +44,7 @@ const Products = {
             price: 250,
             image: "./assets/images/products/stol.jpg", ////////////////////
             category: "пельмени",
-            tags: ["ручная работа", "сибирские", "премиум"]
+            tags: ["ручная работа", "столичные", "премиум"]
         },
         {
             id: 6,
@@ -80,7 +80,7 @@ const Products = {
             price: 275,
             image: "./assets/images/products/romsh.jpg",
             category: "котлеты",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["свиные", "ромштекс", "традиционные"]
         },
         {
             id: 10,
@@ -89,7 +89,7 @@ const Products = {
             price: 260,
             image: "./assets/images/products/moskva.jpg",
             category: "котлеты",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["свиные", "московские", "традиционные"]
         },
         {
             id: 11,
@@ -98,7 +98,7 @@ const Products = {
             price: 380,
             image: "./assets/images/products/naggets.jpg",
             category: "наггетсы",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["куриные", "домашние", "традиционные"]
         },
         {
             id: 12,
@@ -107,7 +107,7 @@ const Products = {
             price: 380,
             image: "./assets/images/products/lula.jpg",
             category: "котлеты",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["говяжьи", "домашние", "традиционные"]
         },
         {
             id: 13,
@@ -116,7 +116,7 @@ const Products = {
             price: 300,
             image: "./assets/images/products/shnisel.jpg",
             category: "котлеты",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["свиные", "шницель", "традиционные"]
         },
         {
             id: 14,
@@ -125,7 +125,7 @@ const Products = {
             price: 280,
             image: "./assets/images/products/frik.jpg",
             category: "тефтели",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["говяжьи", "для супа", "традиционные"]
         },
         {
             id: 15,
@@ -134,7 +134,7 @@ const Products = {
             price: 280,
             image: "./assets/images/products/ezhik.jpg",
             category: "тефтели",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["свиные", "сытные", "традиционные"]
         },
         {
             id: 16,
@@ -143,7 +143,7 @@ const Products = {
             price: 275,
             image: "./assets/images/products/appetit.jpg",
             category: "котлеты",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["свиные", "аппетитные", "традиционные"]
         },
         {
             id: 17,
@@ -152,7 +152,7 @@ const Products = {
             price: 230,
             image: "./assets/images/products/derev.jpg",
             category: "котлеты",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["курица", "сочные", "традиционные"]
         },
         {
             id: 18,
@@ -161,7 +161,7 @@ const Products = {
             price: 250,
             image: "./assets/images/products/nezhnue.jpg",
             category: "котлеты",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["курица", "сочные", "традиционные"]
         },
         {
             id: 19,
@@ -179,7 +179,7 @@ const Products = {
             price: 520,
             image: "./assets/images/products/kolbas.jpg",
             category: "колбаски",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["свиные", "аппетитные", "традиционные"]
         },
         {
             id: 21,
@@ -188,7 +188,7 @@ const Products = {
             price: 520,
             image: "./assets/images/products/vostok.jpg",
             category: "колбаски",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["куриные", "высший сорт", "традиционные"]
         },
         {
             id: 22,
@@ -197,7 +197,7 @@ const Products = {
             price: 280,
             image: "./assets/images/products/bit.jpg",
             category: "котлеты",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["куриные", "особые", "традиционные"]
         },
         {
             id: 23,
@@ -206,7 +206,7 @@ const Products = {
             price: 325,
             image: "./assets/images/products/bif.jpg",
             category: "котлеты",
-            tags: ["свиные", "домашние", "традиционные"]
+            tags: ["говяжьи", "рубленый", "традиционные"]
         },
     ],
 
