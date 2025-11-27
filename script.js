@@ -347,7 +347,7 @@ function sendOrder() {
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     
     const templateParams = {
-        organization: "Морожко - Полуфабрикаты",
+        organization: "ИП Соколова Н.С. - Полуфабрикаты",
         customer_name: name,
         customer_email: email,
         customer_phone: phone,
