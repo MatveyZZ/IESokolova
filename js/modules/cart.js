@@ -54,6 +54,8 @@ const Cart = {
         if (item) {
             item.quantity = newQuantity;
             this.save();
+            // Обновляем карточку товара после изменения количества
+            this.updateProductCard(productId);
         }
     },
 
@@ -62,6 +64,9 @@ const Cart = {
         const product = this.items.find(item => item.id === productId);
         this.items = this.items.filter(item => item.id !== productId);
         this.save();
+        
+        // Обновляем карточку товара после удаления
+        this.updateProductCard(productId);
         
         if (product) {
             Notifications.show(`${product.name} удален из корзины`, 'info');

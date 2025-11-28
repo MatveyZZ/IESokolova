@@ -205,11 +205,15 @@ function openCart() {
     
     checkoutBtn.disabled = false;
     checkoutBtn.innerHTML = 'Оформить заказ';
-    checkoutBtn.classList.remove('btn-loading');
+    checkoutBtn.classList.remove('btn-loading', 'btn-disabled');
     
     if (Cart.isEmpty()) {
         itemsContainer.innerHTML = '<div class="empty-state"><div class="icon">🛒</div><p>Корзина пуста</p></div>';
         document.getElementById('cartTotal').textContent = '';
+        // Делаем кнопку неактивной при пустой корзине
+        checkoutBtn.disabled = true;
+        checkoutBtn.innerHTML = 'Корзина пуста';
+        checkoutBtn.classList.add('btn-disabled');
     } else {
         itemsContainer.innerHTML = Cart.items.map((item, index) => `
             <div class="cart-item" style="animation-delay: ${index * 0.1}s">
@@ -230,6 +234,11 @@ function openCart() {
         
         const total = Cart.getTotal();
         document.getElementById('cartTotal').textContent = `Итого: ${total} ₽`;
+        
+        // Активируем кнопку если корзина не пуста
+        checkoutBtn.disabled = false;
+        checkoutBtn.innerHTML = 'Оформить заказ';
+        checkoutBtn.classList.remove('btn-disabled');
     }
     
     modal.style.display = 'flex';
@@ -241,6 +250,12 @@ function closeCart() {
 
 function showCheckout() {
     if (isProcessingOrder) return;
+    
+    // Проверяем, не пуста ли корзина
+    if (Cart.isEmpty()) {
+        Notifications.show('Корзина пуста. Добавьте товары перед оформлением заказа.', 'warning');
+        return;
+    }
     
     const checkoutBtn = document.querySelector('#cartModal .btn');
     
@@ -264,6 +279,13 @@ function closeCheckout() {
 
 function sendOrder() {
     if (isProcessingOrder) return;
+    
+    // Дополнительная проверка на пустую корзину
+    if (Cart.isEmpty()) {
+        Notifications.show('Корзина пуста. Добавьте товары перед оформлением заказа.', 'warning');
+        closeCheckout();
+        return;
+    }
     
     const name = document.getElementById('customerName').value;
     const email = document.getElementById('customerEmail').value;

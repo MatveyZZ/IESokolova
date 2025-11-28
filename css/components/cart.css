@@ -56,3 +56,23 @@
     margin: 1rem 0;
     color: #2c3e50;
 }
+
+/* Стили для неактивной кнопки */
+.btn-disabled {
+    background: linear-gradient(135deg, #cccccc 0%, #999999 100%) !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.btn-disabled:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Стили для уведомлений warning */
+.notification.warning {
+    background: linear-gradient(135deg, #ffa726 0%, #fb8c00 100%);
+    border-left: 4px solid #f57c00;
+}
