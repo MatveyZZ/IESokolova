@@ -1,30 +1,39 @@
+/* Обновленные CSS переменные */
 :root {
-    /* Цвета */
-    --primary-color: #667eea;
-    --primary-dark: #764ba2;
-    --secondary-color: #e74c3c;
-    --success-color: #4CAF50;
-    --error-color: #f44336;
-    --info-color: #2196F3;
+    /* Основные цвета */
+    --primary: #d3193b;
+    --primary-dark: #4f46e5;
+    --primary-light: #8b5cf6;
+    --secondary: #f59e0b;
+    --accent: #ec4899;
     
-    /* Текст */
-    --text-primary: #2c3e50;
-    --text-secondary: #666;
-    --text-light: #999;
-    --text-white: #ffffff;
+    /* Градиенты */
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    --gradient-secondary: linear-gradient(135deg, #f59e0b 0%, #eab308 100%);
+    --gradient-accent: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
+    --gradient-dark: linear-gradient(135deg, #1e293b 0%, #334155 100%);
     
     /* Фоны */
-    --bg-primary: #c8d4e1;
-    --bg-white: #ffffff;
-    --bg-light: #f8f9fa;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-hover: #f1f5f9;
     
-    /* Границы */
-    --border-color: #e1e5e9;
-    --border-radius: 15px;
-    --border-radius-sm: 8px;
+    /* Текст */
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
     
     /* Тени */
-    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-    --shadow-lg: 0 8px 25px rgba(0,0,0,0.15);
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    
+    /* Скругления */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
 }

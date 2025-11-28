@@ -12,20 +12,42 @@
 
 /* Кнопки */
 .btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     color: white;
     border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    cursor: pointer;
+    padding: 0.875rem 2rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
     font-size: 1rem;
-    transition: all 0.3s ease;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
     width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn:active {
+    transform: translateY(0);
 }
 
 /* Адаптивность */
@@ -35,7 +57,7 @@
     }
     
     .products-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1.5rem;
     }
     
@@ -55,6 +77,8 @@
     .cart {
         bottom: 1rem;
         right: 1rem;
+        width: 60px;
+        height: 60px;
     }
     
     .notification {
@@ -71,11 +95,16 @@
 
 @media (max-width: 480px) {
     .logo {
-        font-size: 2rem;
+        font-size: 1.75rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
     }
     
     .products-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
     .filter-buttons {
@@ -83,7 +112,11 @@
     }
     
     .filter-btn {
-        padding: 6px 12px;
+        padding: 0.5rem 1rem;
         font-size: 0.8rem;
+    }
+    
+    .search-input {
+        padding: 10px 40px 10px 15px;
     }
 }

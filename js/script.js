@@ -208,7 +208,13 @@ function openCart() {
     checkoutBtn.classList.remove('btn-loading', 'btn-disabled');
     
     if (Cart.isEmpty()) {
-        itemsContainer.innerHTML = '<div class="empty-state"><div class="icon">🛒</div><p>Корзина пуста</p></div>';
+        itemsContainer.innerHTML = `
+            <div class="cart-empty">
+                <div class="icon">🛒</div>
+                <p>Корзина пуста</p>
+                <small>Добавьте товары, чтобы сделать заказ</small>
+            </div>
+        `;
         document.getElementById('cartTotal').textContent = '';
         // Делаем кнопку неактивной при пустой корзине
         checkoutBtn.disabled = true;
@@ -217,16 +223,16 @@ function openCart() {
     } else {
         itemsContainer.innerHTML = Cart.items.map((item, index) => `
             <div class="cart-item" style="animation-delay: ${index * 0.1}s">
-                <div>
+                <div class="cart-item-info">
                     <strong>${item.name}</strong><br>
-                    <small>${item.price} ₽ × ${item.quantity}</small>
+                    <small>${item.price} ₽ за шт.</small>
                 </div>
-                <div>
-                    <strong>${item.price * item.quantity} ₽</strong>
-                    <div class="quantity-controls" style="margin-top: 0.5rem;">
-                        <button class="quantity-btn" onclick="Cart.updateQuantity(${item.id}, ${item.quantity - 1})">-</button>
-                        <span class="quantity">${item.quantity}</span>
-                        <button class="quantity-btn" onclick="Cart.updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                <div class="cart-item-controls">
+                    <strong class="cart-item-total">${item.price * item.quantity} ₽</strong>
+                    <div class="quantity-controls-cart">
+                        <button class="quantity-btn-cart minus" onclick="event.stopPropagation(); updateCartItemQuantity(${item.id}, ${item.quantity - 1})">-</button>
+                        <span class="quantity-cart">${item.quantity}</span>
+                        <button class="quantity-btn-cart plus" onclick="event.stopPropagation(); updateCartItemQuantity(${item.id}, ${item.quantity + 1})">+</button>
                     </div>
                 </div>
             </div>
@@ -242,6 +248,20 @@ function openCart() {
     }
     
     modal.style.display = 'flex';
+}
+
+// Функция для обновления количества товара в корзине
+function updateCartItemQuantity(productId, newQuantity) {
+    if (newQuantity <= 0) {
+        // Удаляем товар если количество становится 0
+        Cart.remove(productId);
+    } else {
+        // Обновляем количество
+        Cart.updateQuantity(productId, newQuantity);
+    }
+    
+    // Перерисовываем корзину чтобы показать изменения
+    openCart();
 }
 
 function closeCart() {
@@ -414,6 +434,7 @@ window.closeCheckout = closeCheckout;
 window.sendOrder = sendOrder;
 window.toggleFavorite = toggleFavorite;
 window.updateProductCard = updateProductCard;
+window.updateCartItemQuantity = updateCartItemQuantity; // Добавьте эту строку
 
 // Сделаем Cart доступным глобально для обработчиков onclick
 window.Cart = Cart;
