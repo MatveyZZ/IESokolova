@@ -64,6 +64,8 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    color: var(--text-primary);
 }
 
 .filter-btn::before {
@@ -94,6 +96,11 @@
 .filter-btn span {
     position: relative;
     z-index: 1;
+}
+
+.filter-btn:hover:not(.active) {
+    border-color: var(--primary);
+    background: var(--bg-hover);
 }
 
 .view-options {
